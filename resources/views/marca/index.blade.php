@@ -1,0 +1,62 @@
+<x-guest-layout>
+    <x-authentication-card>
+        <x-slot name="logo">
+            <x-authentication-card-logo />
+        </x-slot>
+
+        <x-validation-errors class="mb-4" />
+
+        <!-- Botón Crear Marca -->
+        <div class="flex justify-end mb-4">
+            <a href="{{ route('marcas.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Crear Marca
+            </a>
+        </div>
+
+        <div class="overflow-hidden shadow-xl sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200 mb-10">
+                <thead class="bg-gray-50 dark:bg-gray-800">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            ID Marca
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Marca
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
+                    @foreach ($marcas as $marca)
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                            {{ $marca->id }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                            {{ $marca->marca }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <a href="{{ route('marcas.edit', $marca->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                            
+                            <form action="{{ route('marcas.destroy', $marca->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:text-red-900 ms-4">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            
+        </div>
+        
+        <a href="{{ route('dashboard') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded my-10">
+            Volver al Inicio
+        </a>
+    </x-authentication-card>
+   
+</x-guest-layout>
+
