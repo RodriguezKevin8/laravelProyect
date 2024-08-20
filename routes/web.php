@@ -7,18 +7,21 @@ use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AutoController;
+use App\Http\Controllers\AutoVentaController;
+
 use App\Http\Controllers\Auth\CustomRegisteredUserController;
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+//Route::get('/register', function () {
+  //  return view('auth.register');
+//})->name('register');
 // Ruta de registro accesible para todos
-//Route::get('/register', [CustomRegisteredUserController::class, 'create'])->name('register');
-//Route::post('/register', [CustomRegisteredUserController::class, 'store']);
+Route::get('/register', [CustomRegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [CustomRegisteredUserController::class, 'store']);
 
 // Middleware para rutas que requieren autenticación
 Route::middleware([
@@ -42,4 +45,8 @@ Route::middleware([
     Route::resource('repuestos', RepuestoController::class);
 
     Route::resource('clientes', ClienteController::class);
+
+    Route::resource('autos', AutoController::class);
+
+    Route::resource('autoventas', AutoVentaController::class);
 });
