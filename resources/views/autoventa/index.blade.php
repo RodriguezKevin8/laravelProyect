@@ -15,7 +15,7 @@
                                 Modelo: {{ $auto->modelo->nombre }} - Año: {{ $auto->modelo->anio }}
                             </h3>
                             <p class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-300">
-                                Número de Serie: {{ $auto->numero_serie }}
+                                 Número de Serie: {{ $auto->numero_serie }}
                             </p>
                             <p class="mt-2 max-w-xl text-sm text-gray-500 dark:text-gray-300">
                                 Estado: {{ $auto->estado }}
@@ -25,7 +25,8 @@
                             </p>
                         </div>
                         <div class="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-right sm:px-6">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Ver Detalles</a>
+                            <a href="{{ route('garantia.create', $auto->id) }}" class="text-indigo-600 hover:text-indigo-900">Ver Detalles y Asignar Garantía</a>
+
                         </div>
                     </div>
                 @endforeach

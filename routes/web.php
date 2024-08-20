@@ -8,7 +8,9 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AutoController;
+use App\Http\Controllers\VentaController;
 use App\Http\Controllers\AutoVentaController;
+use App\Http\Controllers\GarantiaController;
 
 use App\Http\Controllers\Auth\CustomRegisteredUserController;
 
@@ -48,5 +50,13 @@ Route::middleware([
 
     Route::resource('autos', AutoController::class);
 
-    Route::resource('autoventas', AutoVentaController::class);
+    Route::resource('autoventas', AutoVentaController::class);  
+
+    Route::get('/garantia/{id}', [GarantiaController::class, 'create'])->name('garantia.create');
+
+    Route::post('/garantia', [GarantiaController::class, 'store'])->name('garantia.store');
+
+    Route::get('/venta/{id}', [VentaController::class, 'create'])->name('venta.create');
+
+    Route::post('/venta', [VentaController::class, 'store'])->name('venta.store');
 });
