@@ -5,6 +5,8 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\RepuestoController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\Auth\CustomRegisteredUserController;
 
 Route::get('/', function () {
@@ -36,4 +38,8 @@ Route::middleware([
     Route::resource('modelos', ModeloController::class);
 
     Route::resource('proveedores', ProveedorController::class);
+
+    Route::resource('repuestos', RepuestoController::class);
+
+    Route::resource('clientes', ClienteController::class);
 });

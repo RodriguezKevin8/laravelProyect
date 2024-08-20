@@ -38,7 +38,9 @@
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Repuesto</h2>
         <p class="text-gray-500 dark:text-gray-400 mt-4">Gestiona los repuestos y piezas.</p>
-        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar</button>
+        <a href="{{ route('repuestos.index') }}">
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar</button>
+        </a>
     </div>
 
     
@@ -49,6 +51,8 @@
             <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar</button>
         </a>
     </div>
+
+    
 </div>
 
 <script>

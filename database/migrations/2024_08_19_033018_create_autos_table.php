@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('detalles')->nullable();
             $table->string('numero_serie')->nullable();
             $table->string('estado')->nullable();
-            $table ->unsignedBigInteger('id_cliente');
+            $table ->unsignedBigInteger('id_cliente')->nullable();
             $table ->unsignedBigInteger('id_modelo');
             $table->timestamps();
             $table ->foreign('id_cliente') ->references('id')-> on('clientes');

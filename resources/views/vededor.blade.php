@@ -10,3 +10,13 @@
     </p>
 </div>
 
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Agregar Cliente</h2>
+        <p class="text-gray-500 dark:text-gray-400 mt-4">Administra y agrega nuevos clientes al sistema.</p>
+        <a href="{{ route('clientes.index') }}">
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar</button>
+        </a>
+    </div>    
+</div>
