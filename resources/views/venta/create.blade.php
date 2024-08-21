@@ -27,22 +27,23 @@
                 <x-input id="precio" class="block mt-1 w-full" type="number" name="precio" :value="old('precio')" required />
             </div>
 
+            <!-- Dropdown para seleccionar el cliente -->
+            <div class="mt-4">
+                <x-label for="id_cliente" value="Cliente" />
+                <select id="id_cliente" name="id_cliente" class="block mt-1 w-full bg-gray-800 text-gray-200 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                    <option value="">Seleccione un cliente</option>
+                    @foreach($clientes as $cliente)
+                        <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Dropdown para seleccionar el método de pago -->
             <div class="mt-4">
                 <x-label for="id_metodo_pago" value="Método de Pago" />
                 <select id="id_metodo_pago" name="id_metodo_pago" class="block mt-1 w-full bg-gray-800 text-gray-200 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
                     @foreach($metodosPago as $metodo)
                         <option value="{{ $metodo->id }}">{{ $metodo->tipo }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <!-- Dropdown para seleccionar el cliente -->
-            <div class="mt-4">
-                <x-label for="id_cliente" value="Cliente" />
-                <select id="id_cliente" name="id_cliente" class="block mt-1 w-full bg-gray-800 text-gray-200 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
-                    @foreach($clientes as $cliente)
-                        <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>
                     @endforeach
                 </select>
             </div>
@@ -62,14 +63,41 @@
 </x-guest-layout>
 
 <script>
-    
     const idUsuario = parseInt(localStorage.getItem('id_user'), 10);
 
-    // Verificar si la conversión fue exitosa y establecer el valor del campo oculto
     if (!isNaN(idUsuario)) {
         document.getElementById('id_usuario').value = idUsuario;
     } else {
         console.error('ID de usuario no es un número válido');
     }
-</script>
 
+    document.getElementById('id_cliente').addEventListener('change', function () {
+        const clienteId = this.value;
+
+        if (clienteId) {
+            // Hacer la solicitud AJAX al servidor
+            fetch('{{ route("ventas.total-compras") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ id_cliente: clienteId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const totalCompras = data.total_compras;
+                const selectMetodoPago = document.getElementById('id_metodo_pago');
+
+                // Deshabilitar o habilitar la opción de financiamiento bancario
+                const financiamientoOption = selectMetodoPago.querySelector('option[value="3"]'); // ID de financiamiento bancario
+                if (totalCompras >= 50000) {
+                    financiamientoOption.disabled = false;
+                } else {
+                    financiamientoOption.disabled = true;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    });
+</script>

@@ -25,7 +25,11 @@
 
             <div class="mt-4">
                 <x-label for="estado" value="Estado" />
-                <x-input id="estado" class="block mt-1 w-full" type="text" name="estado" :value="old('estado')" />
+                <select id="estado" name="estado" class="block mt-1 w-full bg-gray-800 text-gray-200 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    <option value="Disponible">Disponible</option>
+                    <option value="No disponible">No disponible</option>
+                    <option value="Vendido">Vendido</option>
+                </select>
             </div>
 
             <div class="mt-4">

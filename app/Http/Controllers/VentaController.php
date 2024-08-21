@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,11 +7,21 @@ use App\Models\Venta;
 use App\Models\Auto;
 use App\Models\Cliente;
 use App\Models\Metodo_pago;
-use App\Models\Comprobante;
+use App\Models\Comprobante; 
 
 class VentaController extends Controller
 {
-    // ...
+    /**
+     * Mostrar el formulario para crear una nueva venta.
+     */
+    public function create($id)
+    {
+        $auto = Auto::findOrFail($id);
+        $clientes = Cliente::all();
+        $metodosPago = Metodo_pago::all();
+
+        return view('venta.create', compact('auto', 'clientes', 'metodosPago'));
+    }
 
     /**
      * Guardar la venta en la base de datos y crear el comprobante.
@@ -66,5 +77,13 @@ class VentaController extends Controller
         return redirect()->route('comprobante.show')->with('datos', $datosComprobante);
     }
 
-    // ...
+    public function obtenerTotalCompras(Request $request)
+    {
+        $clienteId = $request->input('id_cliente');
+
+        // Sumar el total de compras del cliente
+        $totalCompras = Venta::where('id_cliente', $clienteId)->sum('precio');
+
+        return response()->json(['total_compras' => $totalCompras]);
+    }
 }

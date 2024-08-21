@@ -17,6 +17,7 @@ class AutoController extends Controller
         return view('auto.index', compact('autos'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */

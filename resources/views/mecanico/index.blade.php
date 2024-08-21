@@ -7,11 +7,7 @@
         <div class="w-full sm:max-w-5xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             <x-validation-errors class="mb-4" />
 
-            <div class="flex justify-end mb-4">
-                <a href="{{ route('autos.create') }}" id="crear-auto-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-                    Crear Auto
-                </a>
-            </div>
+            
 
             <div class="overflow-x-auto w-full">
                 <table class="min-w-full table-auto divide-y divide-gray-200 mb-10">
@@ -34,13 +30,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $auto->numero_serie }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $auto->estado }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ route('autos.edit', $auto->id) }}" class="text-indigo-600 hover:text-indigo-900 editar-btn">Editar</a>
+                                <a href="{{ route('autos.edit', $auto->id) }}" class="text-indigo-600 hover:text-indigo-900">Mantenimiento</a>
                                 
-                                <form action="{{ route('autos.destroy', $auto->id) }}" method="POST" style="display:inline;" class="eliminar-btn">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900 ml-4">Eliminar</button>
-                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -54,4 +45,3 @@
         </div>
     </div>
 </x-guest-layout>
-
