@@ -8,7 +8,13 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AutoController;
+use App\Http\Controllers\VentaController;
 use App\Http\Controllers\AutoVentaController;
+use App\Http\Controllers\GarantiaController;
+use App\Http\Controllers\ComprobanteController;
+use App\Http\Controllers\MantenimientoController;
+use App\Http\Controllers\MecanicoController;
+
 
 use App\Http\Controllers\Auth\CustomRegisteredUserController;
 
@@ -48,5 +54,23 @@ Route::middleware([
 
     Route::resource('autos', AutoController::class);
 
-    Route::resource('autoventas', AutoVentaController::class);
+    Route::resource('autoventas', AutoVentaController::class);  
+
+    Route::resource('mantenimientos', MantenimientoController::class);  
+
+    Route::get('/mecanicos', [MecanicoController::class, 'index'])->name('mecanicos.index');
+
+    Route::get('/garantia/{id}', [GarantiaController::class, 'create'])->name('garantia.create');
+
+    Route::post('/garantia', [GarantiaController::class, 'store'])->name('garantia.store');
+
+    Route::get('/venta/{id}', [VentaController::class, 'create'])->name('venta.create');
+
+    Route::post('/venta', [VentaController::class, 'store'])->name('venta.store');
+
+    Route::post('/ventas/total-compras', [VentaController::class, 'obtenerTotalCompras'])->name('ventas.total-compras');
+
+    Route::get('/comprobante', [ComprobanteController::class, 'show'])->name('comprobante.show');
+
+
 });

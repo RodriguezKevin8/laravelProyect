@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Auto;
 
-class AutoVentaController extends Controller
+
+use App\Models\Mantenimiento;
+
+class MantenimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $autos = Auto::with('modelo')
-        ->where('estado', '!=', 'Vendido')
-        ->where('estado', '!=', 'No disponible')
-        ->get();
-
-    return view('autoventa.index', compact('autos'));
+        $mantenimientos = Mantenimiento::all();
+        return view('mantenimiento.index', compact('mantenimientos'));
     }
 
     /**
