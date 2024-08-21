@@ -4,8 +4,3 @@ VALUES
 ('transferencia bancaria'),
 ('financiamiento bancario'),
 ('cheque');
-INSERT INTO rol (rol) VALUES
-('Administrador'),
-('Vendedor'),
-('Mecanico');
-
