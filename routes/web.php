@@ -16,12 +16,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-//Route::get('/register', function () {
-  //  return view('auth.register');
-//})->name('register');
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 // Ruta de registro accesible para todos
-Route::get('/register', [CustomRegisteredUserController::class, 'create'])->name('register');
-Route::post('/register', [CustomRegisteredUserController::class, 'store']);
+//Route::get('/register', [CustomRegisteredUserController::class, 'create'])->name('register');
+//Route::post('/register', [CustomRegisteredUserController::class, 'store']);
 
 // Middleware para rutas que requieren autenticación
 Route::middleware([
