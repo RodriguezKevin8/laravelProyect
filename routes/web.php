@@ -11,6 +11,7 @@ use App\Http\Controllers\AutoController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\AutoVentaController;
 use App\Http\Controllers\GarantiaController;
+use App\Http\Controllers\ComprobanteController;
 
 use App\Http\Controllers\Auth\CustomRegisteredUserController;
 
@@ -59,4 +60,8 @@ Route::middleware([
     Route::get('/venta/{id}', [VentaController::class, 'create'])->name('venta.create');
 
     Route::post('/venta', [VentaController::class, 'store'])->name('venta.store');
+
+    Route::get('/comprobante', [ComprobanteController::class, 'show'])->name('comprobante.show');
+
+
 });

@@ -9,4 +9,10 @@ class Venta extends Model
 {
     use HasFactory;
     protected $fillable = ['fecha_venta', 'precio', 'id_metodo_pago', 'id_auto', 'id_cliente', 'id_usuario'];
+
+    public function auto()
+{
+    return $this->belongsTo(Auto::class, 'id_auto');
+}
+
 }
