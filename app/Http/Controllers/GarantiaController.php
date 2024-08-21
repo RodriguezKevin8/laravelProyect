@@ -73,7 +73,7 @@ class GarantiaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
@@ -83,4 +83,17 @@ class GarantiaController extends Controller
     {
         //
     }
+
+    public function renovar()
+    {
+
+    }
+
+    /**
+     * Renovar la garantía del vehículo.
+     */
+    
+
+
+
 }

@@ -64,13 +64,24 @@ Route::middleware([
 
     Route::post('/garantia', [GarantiaController::class, 'store'])->name('garantia.store');
 
+    Route::put('/garantia/{id}', [GarantiaController::class, 'update'])->name('garantia.update');
+
+    Route::post('/garantia/actualizar', [GarantiaController::class, 'actualizarGarantia'])->name('garantia.actualizar');
+
     Route::get('/venta/{id}', [VentaController::class, 'create'])->name('venta.create');
 
     Route::post('/venta', [VentaController::class, 'store'])->name('venta.store');
 
+    Route::post('/comprobante/descargar', [VentaController::class, 'descargarPdf'])->name('comprobante.descargar');
+
     Route::post('/ventas/total-compras', [VentaController::class, 'obtenerTotalCompras'])->name('ventas.total-compras');
 
     Route::get('/comprobante', [ComprobanteController::class, 'show'])->name('comprobante.show');
+
+    Route::get('/comprobante/pdf', [ComprobanteController::class, 'generatePDF'])->name('comprobante.pdf');
+
+
+    
 
 
 });
