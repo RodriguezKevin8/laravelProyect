@@ -33,6 +33,6 @@
         </table>
     </div>
 
-    <a href="{{ route('mecanicos.index') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Volver</a>
+    <a href="{{ route('auto_mantenimientos.index') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Volver</a>
 </div>
 @endsection

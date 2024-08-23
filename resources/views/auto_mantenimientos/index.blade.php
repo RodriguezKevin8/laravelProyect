@@ -28,7 +28,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $auto->numero_serie }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $auto->estado }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="{{ route('mantenimiento.create', ['id' => $auto->id]) }}">Crear Mantenimiento</a>
+                            <a href="{{ route('auto_mantenimientos.mostrarMantenimientos', ['id' => $auto->id]) }}">Ver Mantenimiento</a>
                                 
                             </td>
                         </tr>
