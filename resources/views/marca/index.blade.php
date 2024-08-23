@@ -1,44 +1,41 @@
-<x-guest-layout>
+<x-guest-layout>    
     <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
-
+        
         <x-validation-errors class="mb-4" />
 
         <!-- Botón Crear Marca -->
         <div class="flex justify-end mb-4">
-            <a href="{{ route('marcas.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('marcas.create') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded">
                 Crear Marca
             </a>
         </div>
 
-        <div class="overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="overflow-hidden shadow-xl sm:rounded-lg bg-cover bg-center">
             <table class="min-w-full divide-y divide-gray-200 mb-10">
-                <thead class="bg-gray-50 dark:bg-gray-800">
+                <thead class="bg-[#001233] dark:bg-[#001233] bg-opacity-90">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                             ID Marca
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                             Marca
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                             Acciones
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
+                <tbody class="bg-[#001233] divide-y divide-gray-200 dark:bg-[#001233] dark:divide-gray-600 bg-opacity-90">
                     @foreach ($marcas as $marca)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#e5e5e5]">
                             {{ $marca->id }}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#e5e5e5]">
                             {{ $marca->marca }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="{{ route('marcas.edit', $marca->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                            <a href="{{ route('marcas.edit', $marca->id) }}" class="text-[#4b8cdb] hover:text-[#316ba8]">Editar</a>
                             
                             <form action="{{ route('marcas.destroy', $marca->id) }}" method="POST" style="display:inline;">
                                 @csrf
@@ -47,16 +44,14 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
-            
         </div>
         
-        <a href="{{ route('dashboard') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded my-10">
+        <a href="{{ route('dashboard') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded my-10">
             Volver al Inicio
         </a>
     </x-authentication-card>
-   
+    
 </x-guest-layout>
-
