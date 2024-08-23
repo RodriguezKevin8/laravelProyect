@@ -1,56 +1,54 @@
-<x-guest-layout>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <div>
-            <x-authentication-card-logo />
-        </div>
-
-        <div class="w-full sm:max-w-3xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+<x-guest-layout>    
+    <x-authentication-card>
+        <div class="w-full sm:max-w-5xl mt-6 px-6 py-4 bg-[#ffffff] dark:bg-[#1f2937] shadow-md overflow-hidden sm:rounded-lg">
             <x-validation-errors class="mb-4" />
 
+            <!-- Botón Crear Repuesto -->
             <div class="flex justify-end mb-4">
-                <a href="{{ route('repuestos.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <a href="{{ route('repuestos.create') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded">
                     Crear Repuesto
                 </a>
             </div>
 
-            <div class="overflow-x-auto w-full">
-                <table class="min-w-full table-auto divide-y divide-gray-200 mb-10">
-                    <thead class="bg-gray-50 dark:bg-gray-800">
+            <!-- Contenedor de la tabla con overflow-x-auto para permitir scroll horizontal si es necesario -->
+            <div class="overflow-x-auto w-full mb-8">
+                <table class="min-w-full table-auto divide-y divide-gray-200 mb-1">
+                    <thead class="bg-[#001233] dark:bg-[#001233]">
                         <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                                 ID Repuesto
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                                 Nombre
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                                 Descripción
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                                 Proveedor
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#e5e5e5] uppercase tracking-wider">
                                 Acciones
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
+                    <tbody class="bg-[#001233] divide-y divide-gray-200 dark:bg-[#001233] dark:divide-gray-600">
                         @foreach ($repuestos as $repuesto)
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[#e5e5e5]">
                                 {{ $repuesto->id_repuesto}}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[#e5e5e5]">
                                 {{ $repuesto->nombre }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[#e5e5e5]">
                                 {{ $repuesto->descripcion }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[#e5e5e5]">
                                 {{ $repuesto->proveedor->nombre_proveedor }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ route('repuestos.edit', $repuesto->id_repuesto) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                <a href="{{ route('repuestos.edit', $repuesto->id_repuesto) }}" class="text-[#4b8cdb] hover:text-[#316ba8]">Editar</a>
                                 
                                 <form action="{{ route('repuestos.destroy', $repuesto->id_repuesto) }}" method="POST" style="display:inline;">
                                     @csrf
@@ -64,9 +62,9 @@
                 </table>
             </div>
             
-            <a href="{{ route('dashboard') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded my-10">
+            <a href="{{ route('dashboard') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded mt-4">
                 Volver al Inicio
             </a>
         </div>
-    </div>
+    </x-authentication-card>
 </x-guest-layout>

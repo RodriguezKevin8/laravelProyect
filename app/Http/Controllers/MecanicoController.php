@@ -16,4 +16,13 @@ class MecanicoController extends Controller
         return view('mecanico.index', compact('autos'));
     
     }
+
+    public function autoMantenimientos()
+    {
+        
+        $autos = Auto::with('modelo')->where('estado', 'Vendido')->get();
+
+        return view('mecanico.autoMantenimientos', compact('autos'));
+    
+    }
 }

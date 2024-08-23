@@ -14,6 +14,7 @@ use App\Http\Controllers\GarantiaController;
 use App\Http\Controllers\ComprobanteController;
 use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\MecanicoController;
+use App\Http\Controllers\autoMantenimientoController;
 
 
 use App\Http\Controllers\Auth\CustomRegisteredUserController;
@@ -58,7 +59,15 @@ Route::middleware([
 
     Route::resource('mantenimientos', MantenimientoController::class);  
 
+    Route::get('/mantenimiento/create/{id}', [MantenimientoController::class, 'create'])->name('mantenimiento.create');
+
     Route::get('/mecanicos', [MecanicoController::class, 'index'])->name('mecanicos.index');
+
+    Route::get('/autoMantenimientos', [AutoMantenimientoController::class, 'index'])->name('auto_mantenimientos.index');
+
+    Route::get('/autoMantenimientos/mostrarMantenimientos/{id}', [AutoMantenimientoController::class, 'mostrarMantenimientos'])->name('auto_mantenimientos.mostrarMantenimientos');
+
+    Route::post('/mantenimiento/store', [MantenimientoController::class, 'store'])->name('mantenimiento.store');
 
     Route::get('/garantia/{id}', [GarantiaController::class, 'create'])->name('garantia.create');
 
@@ -79,6 +88,9 @@ Route::middleware([
     Route::get('/comprobante', [ComprobanteController::class, 'show'])->name('comprobante.show');
 
     Route::get('/comprobante/pdf', [ComprobanteController::class, 'generatePDF'])->name('comprobante.pdf');
+
+    Route::post('/comprobante/descargarMantenimiento', [MantenimientoController::class, 'descargarPdf'])->name('comprobante.descargarMantenimiento');
+
 
 
     
