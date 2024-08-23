@@ -28,7 +28,7 @@
 
             <!-- Campo para el total -->
             <div class="mt-4">
-                <x-label for="total" value="Total" />
+                <x-label for="total" value="Precio Mantemiento" />
                 <x-input id="total" class="block mt-1 w-full" type="number" name="total" :value="old('total')" step="0.01" />
             </div>
 

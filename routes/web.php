@@ -65,7 +65,7 @@ Route::middleware([
 
     Route::get('/autoMantenimientos', [AutoMantenimientoController::class, 'index'])->name('auto_mantenimientos.index');
 
-    Route::get('/autoMantenimientos/mostrarMantenimientos', [AutoMantenimientoController::class, 'mostrarMantenimientos'])->name('auto_mantenimientos.mostrarMantenimientos');
+    Route::get('/autoMantenimientos/mostrarMantenimientos/{id}', [AutoMantenimientoController::class, 'mostrarMantenimientos'])->name('auto_mantenimientos.mostrarMantenimientos');
 
     Route::post('/mantenimiento/store', [MantenimientoController::class, 'store'])->name('mantenimiento.store');
 
@@ -88,6 +88,9 @@ Route::middleware([
     Route::get('/comprobante', [ComprobanteController::class, 'show'])->name('comprobante.show');
 
     Route::get('/comprobante/pdf', [ComprobanteController::class, 'generatePDF'])->name('comprobante.pdf');
+
+    Route::post('/comprobante/descargarMantenimiento', [MantenimientoController::class, 'descargarPdf'])->name('comprobante.descargarMantenimiento');
+
 
 
     

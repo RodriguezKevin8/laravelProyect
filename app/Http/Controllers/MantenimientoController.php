@@ -9,6 +9,8 @@ use App\Models\Mantenimiento;
 use App\Models\Auto;
 use App\Models\Metodo_Pago;
 use App\Models\Repuesto;
+use App\Models\Comprobante;
+use PDF;
 
 class MantenimientoController extends Controller
 {
@@ -43,6 +45,8 @@ class MantenimientoController extends Controller
      */
     public function store(Request $request)
     {
+        
+        
         $request->validate([
             'fecha_mantenimiento' => 'required|date',
             'descripcion' => 'nullable|string',
@@ -55,6 +59,8 @@ class MantenimientoController extends Controller
             'repuestos' => 'nullable|array',
             'repuestos.*' => 'exists:repuestos,id_repuesto'
         ]);
+
+        $auto = Auto::findOrFail($request->id_auto);
 
         // Crear un nuevo registro en la tabla mantenimientos
         $mantenimiento = Mantenimiento::create([
@@ -73,8 +79,40 @@ class MantenimientoController extends Controller
             $mantenimiento->repuestos()->sync($request->input('repuestos'));
         }
 
-        return redirect()->route('mecanicos.index')->with('success', 'Mantenimiento creado con éxito.');
+        $comprobante = Comprobante::create([
+            'total' => $request->total,
+            'fecha_emision' => now(),
+            'descripcion' => 'Comprobante de mantenimiento del auto modelo ' . $auto->modelo->nombre . ' marca ' . $auto->modelo->marca->marca . 'En motivo de: ' . $request->descripcion,
+            'id_venta' => null,
+            'id_mantenimiento' => $mantenimiento->id,
+        ]);
+
+        $totalMantenimiento = $request->mano_de_obra + $comprobante->total; 
+
+        $datosComprobante = [
+            'id' => $comprobante->id,
+            'total' => $comprobante->total,
+            'fecha_emision' => $comprobante->fecha_emision,
+            'descripcion' => $comprobante->descripcion,
+            'auto' => $auto->modelo->nombre,
+            'marca' => $auto->modelo->marca->marca,
+            'numero_serie' => $auto->numero_serie,
+            'mano_de_obra' => $request->mano_de_obra,
+            'total_mantenimiento' => $totalMantenimiento,
+            'proximo_mantenimiento' => $request->proximo_mantenimiento
+        ];
+
+        return view('comprobante.downloadMantenimiento', compact('datosComprobante'));
+
         //
+    }
+
+    public function descargarPdf(Request $request)
+    {
+        $datosComprobante = json_decode($request->input('datosComprobante'), true);
+    
+        $pdf = PDF::loadView('comprobante.comprobanteMantenimiento', compact('datosComprobante'));
+        return $pdf->download('comprobante_mantenimiento.pdf');
     }
 
     public function mostrarMantenimientos($id)
