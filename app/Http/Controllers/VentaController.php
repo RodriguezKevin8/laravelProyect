@@ -7,13 +7,12 @@ use App\Models\Venta;
 use App\Models\Auto;
 use App\Models\Cliente;
 use App\Models\Metodo_pago;
-use App\Models\Comprobante; 
+use App\Models\Comprobante;
+use PDF;
 
 class VentaController extends Controller
 {
-    /**
-     * Mostrar el formulario para crear una nueva venta.
-     */
+    // ...
     public function create($id)
     {
         $auto = Auto::findOrFail($id);
@@ -23,9 +22,7 @@ class VentaController extends Controller
         return view('venta.create', compact('auto', 'clientes', 'metodosPago'));
     }
 
-    /**
-     * Guardar la venta en la base de datos y crear el comprobante.
-     */
+
     public function store(Request $request)
     {
         // Validar la solicitud
@@ -53,7 +50,7 @@ class VentaController extends Controller
         $auto->estado = 'Vendido';
         $auto->save();
 
-       
+        // Crear el comprobante
         $comprobante = Comprobante::create([
             'total' => $request->precio,
             'fecha_emision' => now(),
@@ -62,7 +59,6 @@ class VentaController extends Controller
             'id_mantenimiento' => null,
         ]);
 
-       
         $datosComprobante = [
             'id' => $comprobante->id,
             'total' => $comprobante->total,
@@ -72,18 +68,17 @@ class VentaController extends Controller
             'marca' => $auto->modelo->marca->marca,
             'numero_serie' => $auto->numero_serie,
         ];
-
-        
-        return redirect()->route('comprobante.show')->with('datos', $datosComprobante);
+    
+        return view('comprobante.download', compact('datosComprobante'));
     }
 
-    public function obtenerTotalCompras(Request $request)
+    public function descargarPdf(Request $request)
     {
-        $clienteId = $request->input('id_cliente');
-
-        // Sumar el total de compras del cliente
-        $totalCompras = Venta::where('id_cliente', $clienteId)->sum('precio');
-
-        return response()->json(['total_compras' => $totalCompras]);
+        $datosComprobante = json_decode($request->input('datosComprobante'), true);
+    
+        $pdf = PDF::loadView('comprobante.comprobante', compact('datosComprobante'));
+        return $pdf->download('comprobante_venta.pdf');
     }
+
+    // ...
 }

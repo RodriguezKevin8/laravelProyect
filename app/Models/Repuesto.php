@@ -23,4 +23,9 @@ class Repuesto extends Model
         return $this->belongsTo(Proveedore::class, 'id_proveedor');
     }
 
+    public function mantenimientos()
+    {
+        return $this->belongsToMany(Mantenimiento::class, 'mantenimiento_repuesto', 'id_repuesto', 'mantenimiento_id');
+    }
+    
 }

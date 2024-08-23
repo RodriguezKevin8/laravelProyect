@@ -22,4 +22,5 @@ class ComprobanteController extends Controller
         // Retornar la vista del comprobante con los datos
         return view('comprobante.show', compact('datos'));
     }
+    
 }
