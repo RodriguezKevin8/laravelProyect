@@ -5,7 +5,7 @@
 
         <!-- Botón Crear Marca -->
         <div class="flex justify-end mb-4">
-            <a href="{{ route('marcas.create') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded">
+            <a href="{{ route('marcas.create') }}" class="mt-4 bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400">
                 Crear Marca
             </a>
         </div>
@@ -49,7 +49,7 @@
             </table>
         </div>
         
-        <a href="{{ route('dashboard') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded my-10">
+        <a href="{{ route('dashboard') }}" class="mt-4 bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400">
             Volver al Inicio
         </a>
     </x-authentication-card>

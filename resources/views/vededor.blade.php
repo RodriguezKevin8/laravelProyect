@@ -10,7 +10,7 @@
         <h2 class="text-xl font-semibold text-[#e5e5e5] dark:text-[#e5e5e5]">Agregar Cliente</h2>
         <p class="text-[#e5e5e5] dark:text-[#b0b0b0] mt-4">Administra y agrega nuevos clientes al sistema.</p>
         <a href="{{ route('clientes.index') }}">
-            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar</button>
+            <button class="mt-4 bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400">Agregar</button>
         </a>
     </div> 
 
@@ -18,14 +18,8 @@
         <h2 class="text-xl font-semibold text-[#e5e5e5] dark:text-[#e5e5e5]">Autos</h2>
         <p class="text-[#e5e5e5] dark:text-[#b0b0b0] mt-4">Gestiona la ventas de los vehículos.</p>
         <a href="{{ route('autoventas.index') }}">
-            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Agregar</button>
+            <button class="mt-4 bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400">Agregar</button>
         </a>
     </div>
-<<<<<<< Updated upstream
 
-
-    
-    
-=======
->>>>>>> Stashed changes
 </div>

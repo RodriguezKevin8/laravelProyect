@@ -10,10 +10,5 @@ INSERT INTO rol (rol) VALUES
 ('Vendedor'),
 ('Mecanico');
 
-=======
 
- INSERT INTO rol (rol) VALUES
-('Administrador'),
-('Vendedor'),
-('Mecanico');
->>>>>>> Stashed changes
+ 

@@ -5,7 +5,7 @@
 
             <!-- Botón Crear Modelo -->
             <div class="flex justify-end mb-4">
-                <a href="{{ route('modelos.create') }}" class="bg-[#001233] text-[#e5e5e5] font-bold py-2 px-4 rounded">
+                <a href="{{ route('modelos.create') }}" class="mt-4 bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400">
                     Crear Modelo
                 </a>
             </div>
@@ -64,7 +64,7 @@
 
             <!-- Botón Volver al Inicio con margen superior aumentado -->
             <div class="mt-8">
-                <a href="{{ route('dashboard') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded">
+                <a href="{{ route('dashboard') }}" class="mt-4 bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400">
                     Volver al Inicio
                 </a>
             </div>    
