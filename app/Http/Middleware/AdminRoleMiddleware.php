@@ -15,21 +15,12 @@ class AdminRoleMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // Verificar si el usuario está autenticado y si tiene el rol de administrador
-<<<<<<< Updated upstream
-       // if (Auth::check() && Auth::user()->id_rol == 1) {
-        //    return $next($request);  // Permitir el acceso
-       // }
+        
+       if (Auth::check() && Auth::user()->id_rol == 1) {
+            return $next($request);  
+        }
 
-        // Redirigir o mostrar un error si no tiene el rol de administrador
-       // return redirect('/dashboard')->with('error', 'No tienes permiso para acceder a esta página.');
-=======
-        //if (Auth::check() && Auth::user()->id_rol == 1) {
-          //  return $next($request);  // Permitir el acceso
-        //}
+        return redirect('/dashboard')->with('error', 'No tienes permiso para acceder a esta página.');
 
-        // Redirigir o mostrar un error si no tiene el rol de administrador
-        //return redirect('/dashboard')->with('error', 'No tienes permiso para acceder a esta página.');
->>>>>>> Stashed changes
     }
 }

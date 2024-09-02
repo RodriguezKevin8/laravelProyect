@@ -1,7 +1,26 @@
 <x-guest-layout>        
-        <x-authentication-card>               
-        <div class="w-full sm:max-w-7xl mt-6 px-6 py-4  bg-[#001233] shadow-md overflow-hidden sm:rounded-lg">
+    <x-authentication-card>
+        <div class="w-full sm:max-w-7xl mt-6 px-6 py-4 bg-[#001233] shadow-md overflow-hidden sm:rounded-lg">
             <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">Autos Disponibles</h2>
+
+          
+            <form method="GET" action="{{ route('autoventas.index') }}" class="mb-4">
+                <div class="flex items-center">
+                    <label for="marca_id" class="mr-2 text-white">Filtrar por Marca:</label>
+                    <select id="marca_id" name="marca_id" class="block mt-1 w-full bg-gray-800 text-gray-200 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                        <option value="">Todas las Marcas</option>
+                        @foreach($marcas as $marca)
+                            <option value="{{ $marca->id }}" {{ request('marca_id') == $marca->id ? 'selected' : '' }}>
+                                {{ $marca->marca }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-button class="ml-4">
+                        {{ __('Filtrar') }}
+                    </x-button>
+                </div>
+            </form>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($autos as $auto)
                     <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden">
@@ -31,6 +50,5 @@
                 </a>
             </div>
         </div>
-    </div>
     </x-authentication-card>
 </x-guest-layout>

@@ -31,21 +31,21 @@ class ModeloController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos de entrada
+       
         $request->validate([
             'nombre' => 'required|string|max:255',
             'id_marca' => 'required|exists:marcas,id',
             'anio' => 'required|integer|min:1900|max:' . date('Y'),  // Validar que el año sea válido
         ]);
 
-        // Crear un nuevo modelo
+       
         $modelo = new Modelo();
         $modelo->nombre = $request->nombre;
-        $modelo->id_marca = $request->id_marca;  // Guardar la marca seleccionada
-        $modelo->anio = $request->anio;  // Guardar el año ingresado
+        $modelo->id_marca = $request->id_marca; 
+        $modelo->anio = $request->anio;  
         $modelo->save();
 
-        // Redirigir al índice de modelos con un mensaje de éxito
+      
         return redirect()->route('modelos.index')->with('success', 'Modelo creado correctamente.');
     }
 

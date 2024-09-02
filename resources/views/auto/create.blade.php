@@ -24,7 +24,7 @@
                 <select id="estado" name="estado" class="block mt-1 w-full bg-[#001233] text-[#e5e5e5] border-[#002347] focus:border-[#4b8cdb] focus:ring-[#4b8cdb] rounded-md shadow-sm">
                     <option value="Disponible">Disponible</option>
                     <option value="No disponible">No disponible</option>
-                    <option value="Vendido">Vendido</option>
+                    
                 </select>
             </div>
 

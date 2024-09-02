@@ -25,7 +25,7 @@ class VentaController extends Controller
 
     public function store(Request $request)
     {
-        // Validar la solicitud
+        
         $request->validate([
             'fecha_venta' => 'required|date',
             'precio' => 'required|numeric',
@@ -35,7 +35,6 @@ class VentaController extends Controller
             'id_usuario' => 'required|exists:users,id',
         ]);
 
-        // Crear una nueva venta
         $venta = Venta::create([
             'fecha_venta' => $request->fecha_venta,
             'precio' => $request->precio,
@@ -45,12 +44,12 @@ class VentaController extends Controller
             'id_usuario' => $request->id_usuario,
         ]);
 
-        // Actualizar el estado del auto a "Vendido"
+       
         $auto = Auto::findOrFail($request->id_auto);
         $auto->estado = 'Vendido';
         $auto->save();
 
-        // Crear el comprobante
+       
         $comprobante = Comprobante::create([
             'total' => $request->precio,
             'fecha_emision' => now(),
@@ -79,6 +78,15 @@ class VentaController extends Controller
         $pdf = PDF::loadView('comprobante.comprobante', compact('datosComprobante'));
         return $pdf->download('comprobante_venta.pdf');
     }
+    public function obtenerTotalCompras(Request $request)
+    {
+        $clienteId = $request->input('id_cliente');
 
-    // ...
+      
+        $totalCompras = Venta::where('id_cliente', $clienteId)->sum('precio');
+
+        return response()->json(['total_compras' => $totalCompras]);
+    }
+
+
 }

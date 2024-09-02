@@ -29,17 +29,17 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-       // Validación del formulario
+      
         $request->validate([
             'rol' => 'required|string|max:255',
         ]);
 
-        // Crear un nuevo rol
+       
         Rol::create([
             'rol' => $request->input('rol'),
         ]);
 
-        // Redirigir a la lista de roles con un mensaje de éxito
+       
         return redirect()->route('rols.index')->with('success', 'Rol creado correctamente.');
     }
 

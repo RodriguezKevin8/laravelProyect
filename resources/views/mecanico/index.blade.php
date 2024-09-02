@@ -2,8 +2,17 @@
     <x-authentication-card>  
         <div class="w-full sm:max-w-5xl mt-6 px-6 py-4 bg-[#001233] shadow-md overflow-hidden sm:rounded-lg">
             <x-validation-errors class="mb-4" />
+            <form method="GET" action="{{ route('mecanicos.index') }}" class="mb-4">
+                <div class="flex items-center">
+                    <x-label for="numero_serie" value="Buscar por Número de Serie" class="text-white mr-2" />
+                    <x-input id="numero_serie" name="numero_serie" class="block mt-1 w-full bg-gray-800 text-gray-200 border-gray-700 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" value="{{ request('numero_serie') }}" />
+                    <x-button class="ml-4">
+                        {{ __('Buscar') }}
+                    </x-button>
+                </div>
+            </form>
 
-            <div class="overflow-x-auto w-full mb-8">
+            <div class="overflow-x-auto w-full  mb-8">
                 <table class="min-w-full table-auto divide-y divide-gray-200 mb-10">
                     <thead class="bg-[#001233] dark:bg-[#001233] bg-opacity-90">
                         <tr>

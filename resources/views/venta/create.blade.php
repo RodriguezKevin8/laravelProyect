@@ -71,11 +71,17 @@
         console.error('ID de usuario no es un número válido');
     }
 
+    // Establecer la fecha actual en el campo de fecha de venta
+    window.onload = function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha_venta').value = today;
+    };
+
     document.getElementById('id_cliente').addEventListener('change', function () {
         const clienteId = this.value;
 
         if (clienteId) {
-            // Hacer la solicitud AJAX al servidor
+            
             fetch('{{ route("ventas.total-compras") }}', {
                 method: 'POST',
                 headers: {
@@ -89,8 +95,8 @@
                 const totalCompras = data.total_compras;
                 const selectMetodoPago = document.getElementById('id_metodo_pago');
 
-                // Deshabilitar o habilitar la opción de financiamiento bancario
-                const financiamientoOption = selectMetodoPago.querySelector('option[value="3"]'); // ID de financiamiento bancario
+               
+                const financiamientoOption = selectMetodoPago.querySelector('option[value="3"]'); 
                 if (totalCompras >= 50000) {
                     financiamientoOption.disabled = false;
                 } else {

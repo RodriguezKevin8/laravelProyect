@@ -63,12 +63,10 @@ class MarcaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Validar los datos del formulario
+      
         $request->validate([
             'marca' => 'required|string|max:255',
         ]);
-
-        // Encontrar la marca y actualizarla
         $marca = Marca::findOrFail($id);
         $marca->update([
             'marca' => $request->marca,

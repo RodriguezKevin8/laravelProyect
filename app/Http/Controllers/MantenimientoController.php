@@ -36,8 +36,6 @@ class MantenimientoController extends Controller
         if (!$auto) {
             return redirect()->back()->withErrors(['msg' => 'Auto no encontrado.']);
         }
-
-        // Pasa el auto a la vista
         return view('mantenimiento.create', compact('auto', 'metodoPagos', 'repuestos'));
     }
     /**
@@ -62,7 +60,7 @@ class MantenimientoController extends Controller
 
         $auto = Auto::findOrFail($request->id_auto);
 
-        // Crear un nuevo registro en la tabla mantenimientos
+       
         $mantenimiento = Mantenimiento::create([
             'fecha_mantenimiento' => $request->input('fecha_mantenimiento'),
             'descripcion' => $request->input('descripcion'),
@@ -74,7 +72,7 @@ class MantenimientoController extends Controller
             'mano_de_obra' => $request->input('mano_de_obra'),
         ]);
 
-        // Asociar repuestos si hay alguno
+      
         if ($request->has('repuestos')) {
             $mantenimiento->repuestos()->sync($request->input('repuestos'));
         }
@@ -104,7 +102,7 @@ class MantenimientoController extends Controller
 
         return view('comprobante.downloadMantenimiento', compact('datosComprobante'));
 
-        //
+        
     }
 
     public function descargarPdf(Request $request)
@@ -117,13 +115,9 @@ class MantenimientoController extends Controller
 
     public function mostrarMantenimientos($id)
     {
-        // Obtén el auto por su ID
-        $auto = Auto::findOrFail($id);
         
-        // Obtén los mantenimientos asociados a ese auto
+        $auto = Auto::findOrFail($id);
         $mantenimientos = Mantenimiento::where('id_auto', $id)->get();
-
-        // Devuelve la vista con los datos
         return view('mantenimientos.index', compact('auto', 'mantenimientos'));
     }
 

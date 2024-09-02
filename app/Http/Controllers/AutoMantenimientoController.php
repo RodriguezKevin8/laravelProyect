@@ -20,13 +20,8 @@ class AutoMantenimientoController extends Controller
 
     public function mostrarMantenimientos($id)
     {
-        // Obtén el auto por su ID
         $auto = Auto::findOrFail($id);
-
-        // Obtén los mantenimientos asociados a ese auto
         $mantenimientos = Mantenimiento::where('id_auto', $id)->get();
-
-        // Devuelve la vista con los datos
         return view('auto_mantenimientos.mostrarMantenimientos', compact('auto', 'mantenimientos'));
     }
 

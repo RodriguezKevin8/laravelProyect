@@ -52,9 +52,8 @@
                 @endif
 
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-[#4a5568] hover:text-[#e5e5e5]" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
+                    <a href="{{ route('dashboard') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded my-10">
+                        Volver al Inicio</a>
 
                     <x-button class="ms-4 bg-[#001233]  text-[#e5e5e5]">
                         {{ __('Register') }}

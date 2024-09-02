@@ -22,19 +22,10 @@
                     <x-input id="password" class="block mt-1 w-full bg-[#2d3748] text-[#e5e5e5] border-[#4a5568] focus:border-[#4b8cdb] focus:ring-[#4b8cdb]" type="password" name="password" required autocomplete="current-password" />
                 </div>
 
-                <div class="block mt-4">
-                    <label for="remember_me" class="flex items-center">
-                        <x-checkbox id="remember_me" name="remember" class="bg-[#2d3748] text-[#e5e5e5] border-[#4a5568]" />
-                        <span class="ms-2 text-sm text-[#e5e5e5]">{{ __('Remember me') }}</span>
-                    </label>
-                </div>
+                
 
                 <div class="flex items-center justify-end mt-4">
-                    @if (Route::has('password.request'))
-                        <a class="underline text-sm text-[#4a5568] dark:text-[#4a5568] hover:text-[#e5e5e5] dark:hover:text-[#e5e5e5] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4b8cdb] dark:focus:ring-offset-[#1f2937]" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
-                        </a>
-                    @endif
+                    
 
                     <x-button class="ms-4 bg-[#001233] hover:bg-[#002347] text-[#e5e5e5]">
                         {{ __('Log in') }}

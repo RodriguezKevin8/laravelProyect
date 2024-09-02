@@ -17,7 +17,6 @@ class Repuesto extends Model
         'id_proveedor',
     ];
 
-    // Relación con el modelo Proveedore
     public function proveedor()
     {
         return $this->belongsTo(Proveedore::class, 'id_proveedor');

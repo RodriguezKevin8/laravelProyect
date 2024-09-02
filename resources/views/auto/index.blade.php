@@ -3,14 +3,14 @@
         <div class="w-full sm:max-w-5xl mt-6 px-6 py-4 bg-[#ffffff] dark:bg-[#1f2937] shadow-md overflow-hidden sm:rounded-lg">
             <x-validation-errors class="mb-4" />
 
-            <!-- Botón Crear Auto -->
+           
             <div class="flex justify-end mb-4">
                 <a href="{{ route('autos.create') }}" id="crear-auto-btn" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded">
                     Crear Auto
                 </a>
             </div>
 
-            <!-- Contenedor de la tabla -->
+         
             <div class="overflow-x-auto w-full mb-8">
                 <table class="min-w-full table-auto divide-y divide-gray-200 mb-1">
                     <thead class="bg-[#001233] dark:bg-[#001233] bg-opacity-90">
@@ -47,8 +47,7 @@
             </div>
             
             <a href="{{ route('dashboard') }}" class="bg-[#001233] hover:bg-[#002347] text-[#e5e5e5] font-bold py-2 px-4 rounded my-10">
-            Volver al Inicio
-        </a>
+            Volver al Inicio</a>
         </div>
     </x-authentication-card>
 </x-guest-layout>

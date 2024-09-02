@@ -22,7 +22,6 @@ class GarantiaController extends Controller
      */
     public function create($id)
     {
-        // Buscar el auto por su ID
         $auto = Auto::findOrFail($id);
         $tiposGarantia = TipoGarantia::all(); 
 

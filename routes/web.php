@@ -23,12 +23,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+//Route::get('/register', function () {
+  //return view('auth.register');
+//})->name('register');
 // Ruta de registro accesible para todos
-//Route::get('/register', [CustomRegisteredUserController::class, 'create'])->name('register');
-//Route::post('/register', [CustomRegisteredUserController::class, 'store']);
+Route::get('/register', [CustomRegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [CustomRegisteredUserController::class, 'store']);
 
 // Middleware para rutas que requieren autenticación
 Route::middleware([
@@ -47,6 +47,8 @@ Route::middleware([
 
     Route::resource('modelos', ModeloController::class);
 
+    //hola
+
     Route::resource('proveedores', ProveedorController::class);
 
     Route::resource('repuestos', RepuestoController::class);
@@ -57,7 +59,7 @@ Route::middleware([
 
     Route::resource('autoventas', AutoVentaController::class);  
 
-    Route::resource('mantenimientos', MantenimientoController::class);  
+    Route::resource('mantenimientos', MantenimientoController::class);      
 
     Route::get('/mantenimiento/create/{id}', [MantenimientoController::class, 'create'])->name('mantenimiento.create');
 

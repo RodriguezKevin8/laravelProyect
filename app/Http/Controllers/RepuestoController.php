@@ -65,14 +65,14 @@ class RepuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validar los datos de entrada
+       
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
             'id_proveedor' => 'required|exists:proveedores,id',  // Validar que el proveedor exista
         ]);
 
-        // Actualizar el repuesto existente
+        
         $repuesto = Repuesto::findOrFail($id);
         $repuesto->update([
             'nombre' => $request->nombre,

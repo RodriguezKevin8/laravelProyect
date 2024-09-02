@@ -65,8 +65,8 @@
         <p><span class="bold">Descripción:</span> {{ $datosComprobante['descripcion'] }}</p>
         <p><span class="bold">Total:</span> ${{ number_format($datosComprobante['total'], 2) }}</p>
         <p><span class="bold">Fecha de Emisión:</span> {{ $datosComprobante['fecha_emision'] }}</p>
-        <p><span class="bold">Modelo del Auto:</span> {{ $datosComprobante['auto'] }}</p>
         <p><span class="bold">Marca del Auto:</span> {{ $datosComprobante['marca'] }}</p>
+        <p><span class="bold">Modelo del Auto:</span> {{ $datosComprobante['auto'] }}</p>
         <p><span class="bold">Número de Serie:</span> {{ $datosComprobante['numero_serie'] }}</p>
         <div class="divider"></div>
         <div class="thanks">
